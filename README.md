@@ -1,9 +1,3 @@
 Blog
-.
-.
-.
-.
-.
-.
 
 Mithun Senthil && Sunil
