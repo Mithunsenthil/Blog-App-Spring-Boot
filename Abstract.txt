@@ -1,0 +1,27 @@
+Blogs
+
+Team Members: 22PD22,22PD36
+
+Abstract:
+  Blogs is a web-based application developed in Java programming language to facilitate users to write blogs on any topic they wish. In this web application, the users can      write a blog and post it on the web quickly. Being online, it can be logged on from anywhere with internet access.
+    
+Features:
+  Users can write blogs that can be posted to the web and visible to all.
+  Only the author can edit the blog.
+  It can be installed anywhere to provide an effective blog.
+
+System Specification:
+  Hardware requirements:
+    Hard Disk: PC with minimum 2GB
+    RAM: 256MB or more
+  
+  Software requirements:
+    Languages: Java, HTML, CSS
+    Tools: Maven, Spring Boot, thymeleaf
+    IDE: IntelliJ Idea
+
+Conclusion:
+	The blog is a useful way to write a blog free of cost.
+
+
+
