@@ -12,6 +12,15 @@ public class Post {
     private Long id;
     private String title;
     private LocalDate date_created;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getId() {
         return id;
@@ -47,7 +56,7 @@ public class Post {
 
     private String body;
 
-    public Post(String title, LocalDate date_created, String body) {
+    public Post(String title, LocalDate date_created, String body,String username) {
         this.title = title;
         this.date_created = date_created;
         this.body = body;

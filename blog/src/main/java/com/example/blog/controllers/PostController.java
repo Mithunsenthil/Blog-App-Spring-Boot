@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -48,33 +49,46 @@ public class PostController {
         return "404";
     }
     @GetMapping(value = "/delete/{id}")
-    public String delete(@PathVariable(value = "id") Long id)
+    public String delete(@PathVariable(value = "id") Long id,Authentication authentication)
     {
         Optional<Post> optionalPost= postServices.getbyId(id);
         if (optionalPost.isPresent()) {
             Post post=optionalPost.get();
-            postServices.deletebyId(id);
-            return "404";
+            if(authentication.getName().equals(post.getUsername()))
+                postServices.deletebyId(post.getId());
+            else
+                return "404";
         }
         return "404";
     }
 
     @GetMapping(value = "/edit/{id}")
-    public String edit(@PathVariable(value = "id") Long id,Model model)
+    public String edit(@PathVariable(value = "id") Long id,Model model,Authentication authentication)
     {
         Optional<Post> optionalPost= postServices.getbyId(id);
         if (optionalPost.isPresent()) {
             Post oldpost=optionalPost.get();
             model.addAttribute("post",oldpost);
-            postServices.deletebyId(oldpost.getId());
+            if(authentication.getName().equals(oldpost.getUsername()))
+                postServices.deletebyId(oldpost.getId());
+            else
+                return "404";
             return "edit";
         }
         return "404";
     }
 
     @PostMapping("/save")
-    public String save(Model model,Post post) {
+    public String save(Model model,Post post,Authentication authentication) {
+        post.setUsername(authentication.getName());
         Post result=postServices.addPost(post);
         return "publish";
+    }
+
+    @GetMapping("/user")
+    public String user(Authentication authentication,Model model)
+    {
+        model.addAttribute("username",authentication.getName());
+        return "user";
     }
 }
