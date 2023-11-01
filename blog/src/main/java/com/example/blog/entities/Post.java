@@ -59,7 +59,7 @@ public class Post {
     public Post(String title, LocalDate date_created, String body,String username) {
         this.title = title;
         this.date_created = date_created;
-        this.body = body;
+        this. body = body;
     }
 
     public Post() {

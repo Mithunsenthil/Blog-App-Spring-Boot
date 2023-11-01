@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog :: Post</title>
+    <title th:text=${post.title}></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <h2 th:text="${post.title}">Title</h2>
-    <h5 th:text="'Date created ' + ${post.date_created}">Created At</h5>
-    <h5 th:text="body ">Updated At</h5>
-    <p th:text="${post.body}">body text</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+
+    <h2 th:text="${post.title}"></h2>
+    <div class="post-info">
+        <h5 th:text="'Date created ' + ${post.date_created}">Published On:</h5>
+    </div>
+    <p class="post-body" th:text="${post.body}"></p>
+    <a class="delete-link" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
+    <a class="edit-link" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+</div>
 </body>
 </html>

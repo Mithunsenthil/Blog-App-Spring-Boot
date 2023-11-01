@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,15 @@ public class PostController {
     private PostServices postServices;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        List<Post> list=postServices.getAllPost();
+        List<Post> temp=new ArrayList<Post>(5);
+        temp.add(list.get(0));
+        temp.add(list.get(1));
+        temp.add(list.get(2));
+        temp.add(list.get(3));
+        temp.add(list.get(4));
+        model.addAttribute("posts",temp);
         return "index";
     }
 
