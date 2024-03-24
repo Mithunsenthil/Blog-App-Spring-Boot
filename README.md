@@ -1,3 +1,3 @@
 Blog
 
-Mithun Senthil && Sunil
+Mithun Senthil
